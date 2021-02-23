@@ -1,12 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+
+import { Link, Route, BrowserRouter as Router } from "react-router-dom";
+
+import Login from './components/user/login/login';
+import Navbar from './components/shared/navbar/navbar';
+import React from "react";
+import ReactDOM from 'react-dom';
+import Register from './components/user/register/register';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Navbar items={
+          [
+            "Login", 
+            "Register"
+          ]
+        } />
+    </Router>
+    
+    <Login />
   </React.StrictMode>,
   document.getElementById('root')
 );
