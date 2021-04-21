@@ -3,6 +3,8 @@ import { Nav, NavDropdown, NavItem, Navbar } from "react-bootstrap";
 import React, { CSSProperties, useEffect, useState } from "react";
 import axios, { CancelTokenSource } from "axios";
 
+import data from "../fakeBackend/db.json";
+
 interface ICat {
   breeds: string[];
   height: number;
@@ -47,10 +49,17 @@ const Home = () => {
       });
   };
 
+  const getData = () => {
+    data.users.map((x) => console.log(x));
+    data.users.push({ username: "username3", password: "pass2" });
+    data.users.map((x) => console.log(x));
+  };
+
   return (
     <div className="App">
       <h1>Welcome to the real reactivation!</h1>
       <h2>Check a cat..</h2>
+      <button onClick={() => getData()}>Load data...</button>
       <button onClick={() => setChange(true)}>Load another cat...</button>
       <tr />
       <img src={`${cat}`} />
