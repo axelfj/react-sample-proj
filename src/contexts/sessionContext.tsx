@@ -8,6 +8,7 @@ export const useSessionContext = () => useContext(SessionContext);
 
 export const SessionContextProvider: React.FC = (props) => {
   const [sessionState, setSessionState] = useState(initialSession);
+
   const defaultSessionContext: [Session, typeof setSessionState] = [
     sessionState,
     setSessionState,
