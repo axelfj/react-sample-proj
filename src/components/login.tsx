@@ -8,6 +8,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import React from "react";
+import { SessionContext } from "../contexts/sessionContext";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -55,7 +56,26 @@ const Login = () => {
       password: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      try {
+        const fromStorage = localStorage.getItem("users");
+
+        if (fromStorage && fromStorage.indexOf(values.username)) {
+          const parsedStorage = JSON.parse(fromStorage);
+          const user = parsedStorage[values.username];
+          if (
+            user.username === values.username &&
+            user.password === values.password
+          ) {
+            alert("Logged!");
+          } else if (user.password !== values.password) {
+            alert("Wrong password.");
+          }
+        } else {
+          alert("That user doesn't exists.");
+        }
+      } catch (err) {
+        throw err;
+      }
     },
   });
 
