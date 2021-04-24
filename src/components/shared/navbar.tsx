@@ -21,6 +21,11 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+const defaultItems = [
+  { text: "Login", ref: "/Login" },
+  { text: "Register", ref: "/Register" },
+];
+
 export default function ButtonAppBar() {
   const classes = useStyles();
 
@@ -35,7 +40,7 @@ export default function ButtonAppBar() {
             aria-label="menu"
           ></IconButton>
           <Typography variant="h6" className={classes.title}>
-            News
+            Reactivation
           </Typography>
           <Button color="inherit" href="/">
             Home
@@ -45,6 +50,12 @@ export default function ButtonAppBar() {
           </Button>
           <Button color="inherit" href="/Register">
             Register
+          </Button>
+          <Button color="inherit" href="/Dashboard">
+            Dashboard
+          </Button>
+          <Button color="inherit" href="/Profile">
+            Profile
           </Button>
         </Toolbar>
       </AppBar>

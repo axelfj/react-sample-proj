@@ -63,18 +63,17 @@ const Register = () => {
         alert("The username is already taken.");
       } else {
         if (fromStorage) {
-          console.log([values.username]);
           newUsers = {
             ...JSON.parse(fromStorage),
             [values.username]: values,
           };
-          console.log("newUsers", newUsers);
         } else {
           newUsers = {
             [values.username]: values,
           };
         }
         localStorage.setItem("users", JSON.stringify(newUsers));
+        alert("User registered!");
       }
     },
   });
