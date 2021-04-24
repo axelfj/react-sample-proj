@@ -77,7 +77,7 @@ const Login = () => {
             user.password === values.password
           ) {
             alert("Logged!");
-            console.log(SessionContext.Consumer);
+            console.log(SessionContext);
           } else if (user.password !== values.password) {
             alert("Wrong password.");
           }
