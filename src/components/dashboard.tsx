@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import React from "react";
 
-const Login = () => {
-  return <h1>Login</h1>;
+const Dashboard = () => {
+  return <h1>Dash</h1>;
 };
 
-export default Login;
+export default Dashboard;

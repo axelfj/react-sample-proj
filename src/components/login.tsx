@@ -1,3 +1,14 @@
+import {
+  Redirect,
+  Route,
+  BrowserRouter as Router,
+  Switch,
+} from "react-router-dom";
+import {
+  SessionContext,
+  SessionContextProvider,
+} from "../contexts/sessionContext";
+
 import Avatar from "@material-ui/core/Avatar";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
@@ -8,7 +19,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import React from "react";
-import { SessionContext } from "../contexts/sessionContext";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -67,6 +77,7 @@ const Login = () => {
             user.password === values.password
           ) {
             alert("Logged!");
+            console.log(SessionContext.Consumer);
           } else if (user.password !== values.password) {
             alert("Wrong password.");
           }
@@ -129,7 +140,7 @@ const Login = () => {
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            Login
           </Button>
           <Grid container>
             <Grid item xs>

@@ -1,6 +1,7 @@
 import ProtectedRoute, { ProtectedRouteProps } from "./routes/privateRoutes";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
+import Bootstrap from "react-bootstrap";
 import Dashboard from "./components/dashboard";
 import Details from "./components/details";
 import Home from "./components/home";
@@ -12,7 +13,7 @@ import Register from "./components/register";
 import { profile } from "node:console";
 import { useSessionContext } from "./contexts/sessionContext";
 
-export default function App() {
+const App = () => {
   const [sessionContext, updateSessionContext] = useSessionContext();
 
   const setRedirectPath = (path: string) => {
@@ -70,4 +71,6 @@ export default function App() {
       </div>
     </Router>
   );
-}
+};
+
+export default App;

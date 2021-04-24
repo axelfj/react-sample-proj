@@ -4,7 +4,7 @@ import React, { CSSProperties, useEffect, useState } from "react";
 import axios, { CancelTokenSource } from "axios";
 
 interface ICat {
-  breeds: string[];
+  config: string[];
   height: number;
   id: string;
   url: string;
@@ -14,16 +14,7 @@ interface ICat {
 const Home = () => {
   const [cat, setCat] = useState<ICat>();
 
-  const [loading, setLoading]: [
-    boolean,
-    (loading: boolean) => void
-  ] = React.useState<boolean>(true);
-
-  const [change, setChange] = useState(false);
-
-  React.useEffect(() => {
-    updateImage();
-  }, [change]);
+  const [loading, setLoading] = React.useState<boolean>(true);
 
   const updateImage = () => {
     axios
@@ -31,7 +22,6 @@ const Home = () => {
       .then((response) => {
         setCat(response.data[0].url);
         setLoading(false);
-        setChange(false);
       })
       .catch((ex) => {
         let error = axios.isCancel(ex)
@@ -43,18 +33,20 @@ const Home = () => {
           : "An unexpected error has occurred";
 
         setLoading(false);
-        setChange(false);
       });
   };
 
   return (
-    <div className="App">
-      <h1>Welcome to the real reactivation!</h1>
-      <h2>Check a cat..</h2>
-      <button onClick={() => setChange(true)}>Load another cat...</button>
-      <tr />
-      <img src={`${cat}`} />
-    </div>
+    <>
+      <div className="">
+        <h1>Welcome to the real reactivation!</h1>
+        <h2>Check a cat..</h2>
+        <button onClick={() => updateImage()}>Load another cat...</button>
+        <div>
+          <img src={`${cat}`} />
+        </div>
+      </div>
+    </>
   );
 };
 
