@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/the-real-reactivation/static/css/main.4a4137e4.chunk.css",
-    "main.js": "/the-real-reactivation/static/js/main.136e3a76.chunk.js",
-    "main.js.map": "/the-real-reactivation/static/js/main.136e3a76.chunk.js.map",
+    "main.js": "/the-real-reactivation/static/js/main.91b2eda3.chunk.js",
+    "main.js.map": "/the-real-reactivation/static/js/main.91b2eda3.chunk.js.map",
     "runtime-main.js": "/the-real-reactivation/static/js/runtime-main.7274f4bf.js",
     "runtime-main.js.map": "/the-real-reactivation/static/js/runtime-main.7274f4bf.js.map",
-    "static/js/2.466b08c4.chunk.js": "/the-real-reactivation/static/js/2.466b08c4.chunk.js",
-    "static/js/2.466b08c4.chunk.js.map": "/the-real-reactivation/static/js/2.466b08c4.chunk.js.map",
+    "static/js/2.7066caa1.chunk.js": "/the-real-reactivation/static/js/2.7066caa1.chunk.js",
+    "static/js/2.7066caa1.chunk.js.map": "/the-real-reactivation/static/js/2.7066caa1.chunk.js.map",
     "static/js/3.fff22ce0.chunk.js": "/the-real-reactivation/static/js/3.fff22ce0.chunk.js",
     "static/js/3.fff22ce0.chunk.js.map": "/the-real-reactivation/static/js/3.fff22ce0.chunk.js.map",
     "index.html": "/the-real-reactivation/index.html",
     "static/css/main.4a4137e4.chunk.css.map": "/the-real-reactivation/static/css/main.4a4137e4.chunk.css.map",
-    "static/js/2.466b08c4.chunk.js.LICENSE.txt": "/the-real-reactivation/static/js/2.466b08c4.chunk.js.LICENSE.txt"
+    "static/js/2.7066caa1.chunk.js.LICENSE.txt": "/the-real-reactivation/static/js/2.7066caa1.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.7274f4bf.js",
-    "static/js/2.466b08c4.chunk.js",
+    "static/js/2.7066caa1.chunk.js",
     "static/css/main.4a4137e4.chunk.css",
-    "static/js/main.136e3a76.chunk.js"
+    "static/js/main.91b2eda3.chunk.js"
   ]
 }
