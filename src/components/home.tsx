@@ -14,7 +14,7 @@ interface ApiCat {
 const Home = () => {
   const [cat, setCat] = useState<ApiCat>();
 
-  const [loading, setLoading] = React.useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const updateImage = () => {
     axios

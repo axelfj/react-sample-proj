@@ -17,7 +17,7 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { useFormik } from "formik";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link as RouterLink} from "react-router-dom";
 
 export const Copyright = () => (
   <Typography variant="body2" color="textSecondary" align="center">
@@ -151,8 +151,8 @@ const Login = () => {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/Register" variant="body2">
-                {"Don't have an account? Sign Up"}
+              <Link component={RouterLink} to='/Register' variant="body2"> 
+                {"Don't have an account? Sign Up"} {/* TODO replace with sharedComponent */}
               </Link>
             </Grid>
           </Grid>
