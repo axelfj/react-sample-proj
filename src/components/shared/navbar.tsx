@@ -1,11 +1,13 @@
+import React, { useContext } from "react";
 import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
 
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-import React from "react";
+import { SessionContext } from "../../contexts/sessionContext";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,13 +23,39 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const defaultItems = [
-  { text: "Login", ref: "/Login" },
-  { text: "Register", ref: "/Register" },
-];
-
 export default function ButtonAppBar() {
+  const [sessionContext, setSessionContext] = useContext(SessionContext);
+
   const classes = useStyles();
+  const history = useHistory();
+
+  const setRoute = (route: string) => {
+    history.push(route);
+  };
+
+  const items = [
+    { route: "/", navItem: "Home", display: !sessionContext.isAuthenticated },
+    {
+      route: "/Login",
+      navItem: "Login",
+      display: !sessionContext.isAuthenticated,
+    },
+    {
+      route: "/Register",
+      navItem: "Register",
+      display: !sessionContext.isAuthenticated,
+    },
+    {
+      route: "/Dashboard",
+      navItem: "Dashboard",
+      display: sessionContext.isAuthenticated,
+    },
+    {
+      route: "/Profile",
+      navItem: "Profile",
+      display: sessionContext.isAuthenticated,
+    },
+  ];
 
   return (
     <div className={classes.root}>
@@ -42,21 +70,13 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Reactivation
           </Typography>
-          <Button color="inherit" href="/">
-            Home
-          </Button>
-          <Button color="inherit" href="/Login">
-            Login
-          </Button>
-          <Button color="inherit" href="/Register">
-            Register
-          </Button>
-          <Button color="inherit" href="/Dashboard">
-            Dashboard
-          </Button>
-          <Button color="inherit" href="/Profile">
-            Profile
-          </Button>
+          {items
+            .filter(({ display }) => display)
+            .map(({ route, navItem }) => (
+              <Button color="inherit" onClick={() => setRoute(route)}>
+                {navItem}
+              </Button>
+            ))}
         </Toolbar>
       </AppBar>
     </div>
