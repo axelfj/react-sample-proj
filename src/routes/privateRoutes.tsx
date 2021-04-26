@@ -11,7 +11,7 @@ const ProtectedRoute = ({
   ...routeProps
 }: ProtectedRouteProps) => {
   if (isAuthenticated) {
-    return <Route {...routeProps} children={routeProps.component} />;
+    return <Route {...routeProps}>{routeProps.component}</Route>;
   } else {
     return <Redirect to={{ pathname: authenticationPath }} />;
   }
