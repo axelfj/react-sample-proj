@@ -48,7 +48,7 @@ const Navbar = ({ items = [] }: INavbar) => {
   };
 
   const defaultItems = [
-    { route: "/", navItem: "Home", display: !sessionContext.isAuthenticated },
+    { route: "/", navItem: "Home", display: true },
     {
       route: "/Login",
       navItem: "Login",

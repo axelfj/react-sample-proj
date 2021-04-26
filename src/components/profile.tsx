@@ -1,14 +1,27 @@
+import { Header, Button as TheButton } from "./shared/styledComponents";
+
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import React from "react";
+import styled from "styled-components";
+
+const FinalBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-item: center;
+`;
 
 const Profile = () => {
   return (
     <div>
-      <h1>
+      <Header>
         <Link to="/Profile/Details">Details</Link>
-      </h1>
-      <Button href="/">Logout</Button>
+      </Header>
+      <TheButton>
+        <Button href="/" className={`text-align: center`}>
+          Logout
+        </Button>
+      </TheButton>
     </div>
   );
 };
