@@ -1,11 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import {
-  Redirect,
-  Route,
-  BrowserRouter as Router,
-  Switch,
-  useHistory,
-} from "react-router-dom";
+import React, { useContext } from "react";
 import {
   SessionContext,
   SessionContextProvider,
@@ -24,13 +17,14 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { useFormik } from "formik";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const Copyright = () => (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        Dazen
+        DAZEN
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -46,7 +40,7 @@ const Login = () => {
     },
     avatar: {
       margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
+      backgroundColor: theme.palette.secondary.dark,
     },
     form: {
       width: "100%", // Fix IE 11 issue.
@@ -54,10 +48,11 @@ const Login = () => {
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
+      backgroundColor: theme.palette.secondary.dark,
     },
   }));
 
-  const [sessionContext, setSessionContext] = useContext(SessionContext);
+  const [, setSessionContext] = useContext(SessionContext);
   const history = useHistory();
 
   const classes = useStyles();
@@ -83,13 +78,13 @@ const Login = () => {
               isAuthenticated: true,
               redirectPath: "/Dashboard",
             });
-            localStorage.setItem("user", JSON.parse(values.username));
             history.push("/Dashboard");
+            localStorage.setItem("user", JSON.parse(values.username));
           } else if (user.password !== values.password) {
             alert("Wrong password.");
           }
         } else {
-          alert("That user doesn't exists.");
+          alert("That user doesn't exist.");
         }
       } catch (err) {
         throw err;

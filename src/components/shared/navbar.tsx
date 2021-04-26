@@ -5,6 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import { SessionContext } from "../../contexts/sessionContext";
+import { ThemeContext } from "react-navigation";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { useHistory } from "react-router-dom";
@@ -20,11 +21,24 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       flexGrow: 1,
     },
+    navBar: {
+      backgroundColor: theme.palette.secondary.dark,
+    },
   })
 );
 
-export default function ButtonAppBar() {
-  const [sessionContext, setSessionContext] = useContext(SessionContext);
+export type NavItem = {
+  route: string;
+  navItem: string;
+  display: boolean;
+};
+
+interface INavbar {
+  items?: NavItem[];
+}
+
+const Navbar = ({ items = [] }: INavbar) => {
+  const [sessionContext] = useContext(SessionContext);
 
   const classes = useStyles();
   const history = useHistory();
@@ -33,7 +47,7 @@ export default function ButtonAppBar() {
     history.push(route);
   };
 
-  const items = [
+  const defaultItems = [
     { route: "/", navItem: "Home", display: !sessionContext.isAuthenticated },
     {
       route: "/Login",
@@ -59,26 +73,44 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.navBar}>
         <Toolbar>
           <IconButton
             edge="start"
             className={classes.menuButton}
-            color="inherit"
+            color="default"
             aria-label="menu"
           ></IconButton>
           <Typography variant="h6" className={classes.title}>
             Reactivation
           </Typography>
-          {items
-            .filter(({ display }) => display)
-            .map(({ route, navItem }) => (
-              <Button color="inherit" onClick={() => setRoute(route)}>
-                {navItem}
-              </Button>
-            ))}
+          {items.length > 0
+            ? items
+                .filter(({ display }) => display)
+                .map(({ route, navItem }) => (
+                  <Button
+                    key={route}
+                    color="inherit"
+                    onClick={() => setRoute(route)}
+                  >
+                    {navItem}
+                  </Button>
+                ))
+            : defaultItems
+                .filter(({ display }) => display)
+                .map(({ route, navItem }) => (
+                  <Button
+                    key={route}
+                    color="inherit"
+                    onClick={() => setRoute(route)}
+                  >
+                    {navItem}
+                  </Button>
+                ))}
         </Toolbar>
       </AppBar>
     </div>
   );
-}
+};
+
+export default Navbar;
