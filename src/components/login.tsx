@@ -19,18 +19,18 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
 
-const Login = () => {
-  const Copyright = () => (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        DAZEN
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
+export const Copyright = () => (
+  <Typography variant="body2" color="textSecondary" align="center">
+    {"Copyright © "}
+    <Link color="inherit" href="https://material-ui.com/">
+      DAZEN
+    </Link>{" "}
+    {new Date().getFullYear()}
+    {"."}
+  </Typography>
+);
 
+const Login = () => {
   const useStyles = makeStyles((theme) => ({
     paper: {
       marginTop: theme.spacing(8),
