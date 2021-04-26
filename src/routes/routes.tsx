@@ -15,12 +15,12 @@ import { SessionContext } from "../contexts/sessionContext";
 const Routes = () => {
   const [sessionContext] = useContext(SessionContext);
 
-  const authRoutes: ProtectedRouteProps = {
+  const authRoutes = { 
     isAuthenticated: !sessionContext.isAuthenticated,
     authenticationPath: sessionContext.redirectPath,
   };
 
-  const defaultProtectedRouteProps: ProtectedRouteProps = {
+  const defaultProtectedRouteProps = { // TODO assign type
     isAuthenticated: sessionContext.isAuthenticated,
     authenticationPath: sessionContext.redirectPath,
   };

@@ -3,16 +3,11 @@ import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import Checkbox from "@material-ui/core/Checkbox";
 import Container from "@material-ui/core/Container";
 import { Copyright } from "./login";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Grid from "@material-ui/core/Grid";
-import Link from "@material-ui/core/Link";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
-import { copyFileSync } from "node:fs";
 import { makeStyles } from "@material-ui/core/styles";
 import { useFormik } from "formik";
 
@@ -35,9 +30,33 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
     backgroundColor: theme.palette.secondary.dark,
   },
-}));
+})); 
+
+const onSubmit = (values: any) => { // TODO: Fix Type 
+  const fromStorage = localStorage.getItem("users");
+    let newUsers = {};
+    if (fromStorage?.includes(values.username)) {
+      alert("The username is already taken.");
+    } else {
+      if (fromStorage) {
+        newUsers = {
+          ...JSON.parse(fromStorage),
+          [values.username]: values,
+        };
+      } else {
+        newUsers = {
+          [values.username]: values,
+        };
+      }
+      localStorage.setItem("users", JSON.stringify(newUsers));
+      alert("User registered!");
+    }
+}
+
 const Register = () => {
+
   const classes = useStyles();
+  
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -45,28 +64,11 @@ const Register = () => {
       lastname: "",
       password: "",
     },
-    onSubmit: (values) => {
-      const fromStorage = localStorage.getItem("users");
-      let newUsers = {};
-      console.log();
-      if (fromStorage?.includes(values.username)) {
-        alert("The username is already taken.");
-      } else {
-        if (fromStorage) {
-          newUsers = {
-            ...JSON.parse(fromStorage),
-            [values.username]: values,
-          };
-        } else {
-          newUsers = {
-            [values.username]: values,
-          };
-        }
-        localStorage.setItem("users", JSON.stringify(newUsers));
-        alert("User registered!");
-      }
-    },
+    onSubmit,
   });
+
+  
+
   return (
     <>
       <Container component="main" maxWidth="xs">
