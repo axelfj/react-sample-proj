@@ -5,6 +5,7 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
 import Container from "@material-ui/core/Container";
+import { Copyright } from "./login";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Grid from "@material-ui/core/Grid";
@@ -15,18 +16,6 @@ import { copyFileSync } from "node:fs";
 import { makeStyles } from "@material-ui/core/styles";
 import { useFormik } from "formik";
 
-const Copyright = () => {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://soundcloud.com/dazencr">
-        DAZEN
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-};
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
