@@ -1,8 +1,10 @@
+import React, { useContext, useEffect } from "react";
 import {
   Redirect,
   Route,
   BrowserRouter as Router,
   Switch,
+  useHistory,
 } from "react-router-dom";
 import {
   SessionContext,
@@ -18,14 +20,13 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
-import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { useFormik } from "formik";
 
-function Copyright() {
-  return (
+const Login = () => {
+  const Copyright = () => (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
@@ -35,29 +36,30 @@ function Copyright() {
       {"."}
     </Typography>
   );
-}
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+  const useStyles = makeStyles((theme) => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+    avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+      width: "100%", // Fix IE 11 issue.
+      marginTop: theme.spacing(1),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+  }));
 
-const Login = () => {
+  const [sessionContext, setSessionContext] = useContext(SessionContext);
+  const history = useHistory();
+
   const classes = useStyles();
 
   const formik = useFormik({
@@ -77,7 +79,12 @@ const Login = () => {
             user.password === values.password
           ) {
             alert("Logged!");
-            console.log(SessionContext);
+            setSessionContext({
+              isAuthenticated: true,
+              redirectPath: "/Dashboard",
+            });
+            localStorage.setItem("user", JSON.parse(values.username));
+            history.push("/Dashboard");
           } else if (user.password !== values.password) {
             alert("Wrong password.");
           }

@@ -1,10 +1,9 @@
 import { Session, initialSession } from "../models/session";
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 export const SessionContext = createContext<
   [Session, (session: Session) => void]
->([initialSession, () => {}]);
-export const useSessionContext = () => useContext(SessionContext);
+>([initialSession, (session: Session) => {}]);
 
 export const SessionContextProvider: React.FC = (props) => {
   const [sessionState, setSessionState] = useState(initialSession);

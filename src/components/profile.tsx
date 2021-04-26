@@ -3,9 +3,11 @@ import React from "react";
 
 const Profile = () => {
   return (
-    <>
-      <Link to="/Profile/Details">Details</Link>
-    </>
+    <div>
+      <h1>
+        <Link to="/Profile/Details">Details</Link>
+      </h1>
+    </div>
   );
 };
 
