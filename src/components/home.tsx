@@ -1,10 +1,7 @@
-import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import { Nav, NavDropdown, NavItem, Navbar } from "react-bootstrap";
-import React, { CSSProperties, useEffect, useState } from "react";
-import axios, { CancelTokenSource } from "axios";
+import { Button, Header, Image } from "./shared/styledComponents";
+import React, { useState } from "react";
 
-import Typography from "@material-ui/core/Typography";
-import styled from "styled-components";
+import axios from "axios";
 
 interface ApiCat {
   breeds: Array<any>;
@@ -13,34 +10,6 @@ interface ApiCat {
   url: string;
   width: number;
 }
-
-export const Button = styled.button`
-  display: inline-block;
-  color: palevioletred;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-export const Image = styled.img`
-  height: 720px;
-  max-width: 100%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-export const Header = styled.h1`
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-`;
 
 const Home = () => {
   const [cat, setCat] = useState<ApiCat>();

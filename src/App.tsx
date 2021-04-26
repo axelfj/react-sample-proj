@@ -6,9 +6,11 @@ import { SessionContextProvider } from "./contexts/sessionContext";
 
 const App = () => {
   return (
-    <SessionContextProvider>
-      <Routes />
-    </SessionContextProvider>
+    <>
+      <SessionContextProvider>
+        <Routes />
+      </SessionContextProvider>
+    </>
   );
 };
 
