@@ -29,8 +29,6 @@ const Routes = () => {
     <Router>
       <Navbar />
       <Switch>
-        {/* If the current URL is /about, this route is rendered
-            while the rest are ignored */}
         <ProtectedRoute
           {...defaultProtectedRouteProps}
           path="/dashboard"
@@ -59,12 +57,8 @@ const Routes = () => {
             why we put this one last of all */}
 
         <Route {...authRoutes} path="/login" component={Login} />
-
         <Route {...authRoutes} path="/register" component={Register} />
-
-        <Route path="/">
-          <Home />
-        </Route>
+        <Route path="/" component={Home} />
       </Switch>
     </Router>
   );
