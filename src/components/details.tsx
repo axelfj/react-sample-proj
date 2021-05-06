@@ -138,7 +138,7 @@ const Details = () => {
               color="primary"
               className={classes.submit}
             >
-              Confirm
+              Edit
             </Button>
           </form>
         </div>
