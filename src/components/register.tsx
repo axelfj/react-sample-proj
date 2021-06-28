@@ -30,33 +30,33 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
     backgroundColor: theme.palette.secondary.dark,
   },
-})); 
+}));
 
-const onSubmit = (values: any) => { // TODO: Fix Type 
+const onSubmit = (values: any) => {
+  // TODO: Fix Type
   const fromStorage = localStorage.getItem("users");
-    let newUsers = {};
-    if (fromStorage?.includes(values.username)) {
-      alert("The username is already taken.");
+  let newUsers = {};
+  if (fromStorage?.includes(values.username)) {
+    alert("The username is already taken.");
+  } else {
+    if (fromStorage) {
+      newUsers = {
+        ...JSON.parse(fromStorage),
+        [values.username]: values,
+      };
     } else {
-      if (fromStorage) {
-        newUsers = {
-          ...JSON.parse(fromStorage),
-          [values.username]: values,
-        };
-      } else {
-        newUsers = {
-          [values.username]: values,
-        };
-      }
-      localStorage.setItem("users", JSON.stringify(newUsers));
-      alert("User registered!");
+      newUsers = {
+        [values.username]: values,
+      };
     }
-}
+    localStorage.setItem("users", JSON.stringify(newUsers));
+    alert("User registered!");
+  }
+};
 
 const Register = () => {
-
   const classes = useStyles();
-  
+
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -66,8 +66,6 @@ const Register = () => {
     },
     onSubmit,
   });
-
-  
 
   return (
     <>

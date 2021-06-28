@@ -1,6 +1,3 @@
-import ProtectedRoute, { ProtectedRouteProps } from "./routes/privateRoutes";
-import React, { useEffect } from "react";
-
 import Routes from "./routes/routes";
 import { SessionContextProvider } from "./contexts/sessionContext";
 

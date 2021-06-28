@@ -1,11 +1,10 @@
-import React from "react";
-
 import Avatar from "@material-ui/core/Avatar";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import { Copyright } from "./login";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -32,11 +31,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const Details = () => {
   const classes = useStyles();
 
-  const formik = useFormik({ // can destructure formik value 
+  const formik = useFormik({
+    // can destructure formik value
     initialValues: {
       username: "",
       firstname: "",
