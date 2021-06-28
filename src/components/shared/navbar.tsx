@@ -33,7 +33,7 @@ export type NavItem = {
   display: boolean;
 };
 
-interface INavbar {
+export interface INavbar {
   items?: NavItem[];
 }
 
