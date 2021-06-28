@@ -1,8 +1,8 @@
-import { Header, Button as TheButton } from "./shared/styledComponents";
+import React from "react";
+import { Button as TheButton, Header, Image } from "./shared/styledComponents";
 
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import React from "react";
 import styled from "styled-components";
 
 const FinalBtn = styled.button`
@@ -11,7 +11,9 @@ const FinalBtn = styled.button`
   align-item: center;
 `;
 
+
 const Profile = () => {
+  const data = fetch('http://localhost:5000/user').then(response => response.json()).then(data => console.log(data));
   return (
     <div>
       <Header>
