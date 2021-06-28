@@ -1,5 +1,5 @@
-import { createLanguageService } from "typescript"
+import { createLanguageService } from "typescript";
 
 const register = (values: string[]) => {
-    return values;
-}
+  return values;
+};
