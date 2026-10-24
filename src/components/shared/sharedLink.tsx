@@ -12,7 +12,7 @@ interface SharedLinkProps {
 const SharedLink: FC<SharedLinkProps> = ({to, text}) => {
 
     return (
-        <Link component={RouterLink} {...to}>{text}</Link>
+        <Link component={RouterLink} to={to}>{text}</Link>
     )
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import { StoryFn as Story, Meta } from '@storybook/react';
 
 import NavBar, { INavbar, NavItem } from '../components/shared/navbar';
 
@@ -8,7 +8,7 @@ export default {
     component: NavBar,
     argTypes: {
         items: {
-            control: "array",
+            control: "object",
         },
     },
   } as Meta;

@@ -44,3 +44,10 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## Updated development tooling
+
+Use Node.js 24. Run `npm ci --ignore-scripts`, `npm start`, `npm test`, and `npm run build`. The production output remains in `build/`. The unsupported Create React App toolchain has been replaced with Vite and Vitest.
+
+Storybook uses the Vite renderer: `npm run storybook` and `npm run build-storybook`. Obsolete, unused backend and React Navigation dependencies have been removed; the client application and Storybook builds are verified separately.

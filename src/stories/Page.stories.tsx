@@ -1,6 +1,6 @@
 import * as HeaderStories from "./Header.stories";
 
-import { Meta, Story } from "@storybook/react";
+import { Meta, StoryFn as Story } from "@storybook/react";
 import { Page, PageProps } from "./Page";
 
 import React from "react";
