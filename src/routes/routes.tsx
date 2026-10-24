@@ -2,7 +2,7 @@ import ProtectedRoute, { ProtectedRouteProps } from "./privateRoutes";
 import React, { useContext, useEffect } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
-import Bootstrap from "react-bootstrap";
+
 import Dashboard from "../components/dashboard";
 import Details from "../components/details";
 import Home from "../components/home";
